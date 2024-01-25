@@ -1,0 +1,12 @@
+# Authentication
+tenancy_ocid         = "ocid1.tenancy.oc1..aaaaaaaax35wv5a7d7xtbdi62tz25kw2so3mg2oiiexredhsxq27rfiqilva"
+user_ocid            = "ocid1.user.oc1..aaaaaaaahpcggagjcinwfugr5cgpvons66n3qishh6vvvjzp3qkrnvt6cyjq"
+fingerprint          = "2e:17:61:26:3c:63:75:13:5d:9a:e9:f1:1b:41:c5:0c"
+private_key_path     = "/Users/rahulmr_in/.oci/config"
+
+# Region
+region = "us-chicago-1"
+
+#compartment OCID
+
+compartment_id = "ocid1.compartment.oc1..aaaaaaaa6zrjqmbn7fgkm3scw5wlrwthgofpqhz6mkekfvhpon6juwgd6bpq" #m-prod-genai

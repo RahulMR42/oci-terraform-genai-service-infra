@@ -1,0 +1,118 @@
+## Copyright (c) 2024, Oracle and/or its affiliates.
+## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
+
+title: "OCI Generative AI Service Quickstart"
+stackDescription: "OCI Generative AI service Infra setup and a demo custom model creation"
+description: "OCI Generative AI service Infra setup and a demo custom model creation"
+schemaVersion: 1.1.0
+version: "20240125"
+locale: "en"
+
+#################
+# Variable Groups
+#################
+variableGroups:
+  - title: General Configuration
+    visible: false
+    variables:
+      - tenancy_ocid
+      - compartment_ocid
+      - user_ocid
+      - fingerprint
+      - private_key_path
+      - region
+  - title: Common Variables
+    visible: true
+    variables:
+      - name_prefix
+      - compartment_id
+  - title: Dedicated AI Cluster For Hosting
+    visible : true
+    variables:
+      - create_dac_for_hosting
+      - dedicated_ai_cluster_unit_count_for_hosting
+      - dedicated_ai_cluster_unit_shape_for_hosting
+  - title: Dedicated AI Cluster For Tuning
+    visible: true
+    variables:
+      - create_dac_for_tuning
+      - dedicated_ai_cluster_unit_count_for_tuning
+      - dedicated_ai_cluster_unit_shape_for_tuning
+
+
+
+######################
+# Variable Definitions
+######################
+variables:
+  # Required
+
+  compartment_id:
+    type: oci:identity:compartment:id
+    title: "Compartment"
+    description: "The compartment in which to create resources"
+    required: true
+  name_prefix:
+    type: string
+    title: "A string to prefix your OCI Resources"
+    required: true
+    default: "ociDevops"
+  create_dac_for_hosting:
+    type: boolean
+    title: "Uncheck to disable creation of DAC for hosting"
+    required: true
+    default: true
+  dedicated_ai_cluster_unit_count_for_hosting:
+    type: integer
+    title: "Number of dedicated units in AI cluster for hosting"
+    minimum: 1
+    maximum: 2
+    required: true
+    default: 1
+    visible:
+      and:
+        - create_dac_for_hosting
+  dedicated_ai_cluster_unit_shape_for_hosting:
+    type: string
+    title: "The shape of dedicated unit in this AI cluster"
+    required: true
+    default: LARGE_COHERE
+    visible:
+      and:
+        - create_dac_for_hosting
+
+  create_dac_for_tuning:
+    type: boolean
+    title: "Uncheck to disable creation of DAC for tuning"
+    required: true
+    default: true
+  dedicated_ai_cluster_unit_count_for_tuning:
+    type: integer
+    title: "Number of dedicated units in AI cluster for tuning"
+    required: true
+    default: 2
+    minimum: 2
+    maximum: 4
+    visible:
+      and:
+        - create_dac_for_tuning
+  dedicated_ai_cluster_unit_shape_for_tuning:
+    type: string
+    title: "The shape of dedicated unit in this AI cluster"
+    required: true
+    default: SMALL_COHERE
+    visible:
+      and:
+        - create_dac_for_tuning
+
+
+
+
+
+
+
+
+
+
+
+
