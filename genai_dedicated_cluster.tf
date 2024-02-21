@@ -18,7 +18,7 @@ resource "oci_generative_ai_dedicated_ai_cluster" "dedicated_ai_cluster_for_tuni
   #Required
   count = var.create_dac_for_tuning ? 1:0
   compartment_id = var.compartment_id
-  type = "HOSTING"
+  type = "FINE_TUNING"
   unit_count = var.dedicated_ai_cluster_unit_count_for_tuning
   unit_shape = var.dedicated_ai_cluster_unit_shape_for_tuning
   #Optional
